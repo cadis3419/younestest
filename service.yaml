@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-directory-service
+spec:
+  type: NodePort  # Exposes the service to external traffic
+  selector:
+    app: user-directory-app
+  ports:
+    - protocol: TCP
+      port: 80          # The port the service will use
+      targetPort: 1934   # The port inside the container
+      nodePort: 30001    # External port on your cluster
